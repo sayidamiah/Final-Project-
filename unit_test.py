@@ -1,24 +1,22 @@
 import unittest
-from function import multiply_numbers
+class TestDataMerge(unittest.TestCase):
 
-class TestFunction(unittest.TestCase):
+    def setUp(self):
+        # Create small test datasets for validation
+        self.test_working_hours = pd.DataFrame({
+            'entity': ['CountryA', 'CountryB'],
+            'code': ['A', 'B'],
+            'year': [2000, 2001],
+            'average_annual_working_hours_per_worker': [2000, 1900]
+        })
 
-    def test_multiplication(self):
-        result = multiply_numbers(3,5)
-        self.assertEqual(result, 15)
-    
-    def test_multiplication_negative_numbers(self):
-        result = multiply_numbers(-2,7)
-        self.assertEqual(result, -14)
+        self.test_productivity = pd.DataFrame({
+            'entity': ['CountryA', 'CountryB'],
+            'code': ['A', 'B'],
+            'year': [2000, 2001],
+            'productivity:_output_per_hour_worked': [50.0, 45.0]
+        })
 
-   # def test_multiplication_float_numbers(self):
-       # result = multiply_numbers(1.5,2.5)
-       # self.assertAlmostEqual(result,3.75, places=2)
-    
-    def test_multiplication_strings(self):
-        with self.assertRaises(TypeError):
-            multiply_numbers("10",2)
-            multiply_numbers(10,"2")
-
-if __name__ == '__main__':
+# Run the tests
+if __name__ == "__main__":
     unittest.main()
