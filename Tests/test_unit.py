@@ -1,23 +1,13 @@
 import unittest
 import pandas as pd
 import matplotlib as plt
-class TestDataMerge(unittest.TestCase):
+class TestDataLoading(unittest.TestCase):
+
 
     def setUp(self):
-        # Create small test datasets for validation
-        self.test_working_hours = pd.DataFrame({
-            'entity': ['CountryA', 'CountryB'],
-            'code': ['A', 'B'],
-            'year': [2000, 2001],
-            'average_annual_working_hours_per_worker': [2000, 1900]
-        })
-
-        self.test_productivity = pd.DataFrame({
-            'entity': ['CountryA', 'CountryB'],
-            'code': ['A', 'B'],
-            'year': [2000, 2001],
-            'productivity:_output_per_hour_worked': [50.0, 45.0]
-        })
+        # Paths to the CSV files
+        self.working_hours_path = 'annual-working-hours-per-worker.csv'
+        self.productivity_path = 'labor-productivity-per-hour-pennworldtable.csv'
 
 # Run the tests
 if __name__ == "__main__":
