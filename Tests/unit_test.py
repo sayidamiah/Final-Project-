@@ -1,4 +1,6 @@
 import unittest
+import pandas as pd
+import matplotlib as plt
 class TestDataMerge(unittest.TestCase):
 
     def setUp(self):
