@@ -1,5 +1,6 @@
 import pandas as pd 
 import matplotlib.pyplot as plt 
+import seaborn as sns
 
 #Loading datasets
 working_hours_data = pd.read_csv('Data/annual-working-hours-per-worker.csv')
@@ -23,3 +24,8 @@ sns.regplot(
     scatter_kws={'alpha': 0.7, 'color': 'orange'}, 
     line_kws={'color': 'orange'}
 )
+
+#Adding titles and labels to scatter plot
+plt.title('Correlation Between Annual Working Hours and Productivity (2017)', fontsize=16)
+plt.xlabel('Annual Working Hours per Worker', fontsize=14)
+plt.ylabel('Productivity (Output per Hour Worked)', fontsize=14)
