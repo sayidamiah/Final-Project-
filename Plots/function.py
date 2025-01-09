@@ -1,5 +1,5 @@
 import pandas as pd 
-import matplotlib as plt 
+import matplotlib.pyplot as plt 
 
 #Loading datasets
 working_hours_data = pd.read_csv('Data/annual-working-hours-per-worker.csv')
@@ -13,3 +13,13 @@ merged_data.rename(columns={
     'Productivity: output per hour worked': 'Productivity',
     'Average annual working hours per worker': 'Working Hours'
 }, inplace=True)
+
+#Scatter plot
+plt.figure(figsize=(10, 6))
+sns.regplot(
+    x='Working Hours', 
+    y='Productivity', 
+    data=merged_data, 
+    scatter_kws={'alpha': 0.7, 'color': 'orange'}, 
+    line_kws={'color': 'orange'}
+)
