@@ -38,6 +38,10 @@ class TestCorrelationAnalysis(unittest.TestCase):
             pd.testing.assert_frame_equal(prod_data, self.productivity_data)
             pd.testing.assert_frame_equal(work_data, self.working_hours_data)
 
+    def test_preprocess_data(self):
+        #Test the preprocessing function
+        merged_data = preprocess_data(self.productivity_data, self.working_hours_data, 2017)
+        pd.testing.assert_frame_equal(merged_data, self.expected_merged_data)
 
 # Run the tests
 if __name__ == "__main__":
