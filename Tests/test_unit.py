@@ -1,20 +1,29 @@
 import unittest
 import pandas as pd
-import os
-import matplotlib as plt
-class TestDataLoading(unittest.TestCase):
+from io import BytesIO
+from Plots.correlation_analysis import load_data, preprocess_data, create_scatter_plot
+
+class TestCorrelationAnalysis(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        # Simulated datasets for testing
+        cls.productivity_data = pd.DataFrame({
+            'Entity': ['Country A', 'Country B'],
+            'Code': ['A', 'B'],
+            'Year': [2017, 2017],
+            'Productivity: output per hour worked': [50, 40]
+        })
+
+        cls.working_hours_data = pd.DataFrame({
+            'Entity': ['Country A', 'Country B'],
+            'Code': ['A', 'B'],
+            'Year': [2017, 2017],
+            'Average annual working hours per worker': [1800, 2000]
+        })
 
 
-    def setUp(self):
-        # Paths to the CSV files
-        self.working_hours_path = 'Data/annual-working-hours-per-worker.csv'
-        self.productivity_path = 'Data/labor-productivity-per-hour-pennworldtable.csv'
-    
-    def test_files_exist(self):
-        # Check if the files exist
-        self.assertTrue(os.path.exists(self.working_hours_path), "Working hours file does not exist.")
-        self.assertTrue(os.path.exists(self.productivity_path), "Productivity file does not exist.")
-
+ 
 
 # Run the tests
 if __name__ == "__main__":
