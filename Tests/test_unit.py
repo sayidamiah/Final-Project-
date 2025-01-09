@@ -22,6 +22,13 @@ class TestCorrelationAnalysis(unittest.TestCase):
             'Average annual working hours per worker': [1800, 2000]
         })
 
+        cls.expected_merged_data = pd.DataFrame({
+            'Entity': ['Country A', 'Country B'],
+            'Code': ['A', 'B'],
+            'Year': [2017, 2017],
+            'Productivity': [50, 40],
+            'Working Hours': [1800, 2000]
+        })
 
  
 
