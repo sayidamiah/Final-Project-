@@ -1,6 +1,7 @@
 import unittest
 import pandas as pd
 from io import BytesIO
+from unittest.mock import patch
 from Plots.correlation_analysis import load_data, preprocess_data, create_scatter_plot
 
 class TestCorrelationAnalysis(unittest.TestCase):
@@ -30,7 +31,13 @@ class TestCorrelationAnalysis(unittest.TestCase):
             'Working Hours': [1800, 2000]
         })
 
- 
+    def test_load_data(self):
+        #Verify the data loading function
+        with patch('pandas.read_csv', side_effect=[self.productivity_data, self.working_hours_data]):
+            prod_data, work_data = load_data('mock_prod.csv', 'mock_work.csv')
+            pd.testing.assert_frame_equal(prod_data, self.productivity_data)
+            pd.testing.assert_frame_equal(work_data, self.working_hours_data)
+
 
 # Run the tests
 if __name__ == "__main__":
