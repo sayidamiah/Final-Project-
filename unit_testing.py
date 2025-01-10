@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 from scipy.stats import linregress
 from unittest.mock import patch
-from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range, add_lagged_variables
+from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range, add_lagged_variables, create_time_lag_scatter_plot
 
 class TestAnalysis(unittest.TestCase):
 
@@ -100,6 +100,12 @@ class TestAnalysis(unittest.TestCase):
             'Lagged_WorkingHours_1': [None, 1800, 1700]
         })
         pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+    
+    def test_create_time_lag_scatter_plot(self):
+        # Test time lag scatter plot creation
+        data = add_lagged_variables(self.expected_merged_data, lag_column="Working Hours", lagged_column_name="Lagged_WorkingHours_1")
+        buf = BytesIO()
+        create_time_lag_scatter_plot(data, output_file_2=buf)
 
 
 # Run the tests
