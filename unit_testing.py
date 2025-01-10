@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 from scipy.stats import linregress
 from unittest.mock import patch
-from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics
+from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range
 
 class TestAnalysis(unittest.TestCase):
 
@@ -78,6 +78,12 @@ class TestAnalysis(unittest.TestCase):
         # Assert correlation and p-value
         self.assertAlmostEqual(correlation, expected_correlation, places=2, msg="Correlation coefficient mismatch.")
         self.assertTrue(p_value > 0, "P-value should be greater than 0.")
+    
+    def test_preprocess_data_range(self):
+        # Test for correct filtering and merging for a year range
+        merged_data = preprocess_data_range(self.productivity_data, self.working_hours_data, 2008, 2017)
+        expected_data = self.expected_merged_data
+        pd.testing.assert_frame_equal(merged_data, expected_data)
 
 
 # Run the tests
