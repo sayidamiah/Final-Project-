@@ -2,13 +2,14 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from scipy.stats import pearsonr
 
+#Loads datasets from CSV files
 def load_data(productivity_file, working_hours_file):
-    """Load datasets from CSV files."""
     return pd.read_csv(productivity_file), pd.read_csv(working_hours_file)
 
+#Filters and merges the datasets for a specific year
 def preprocess_data(productivity_data, working_hours_data, year):
-    """Filter and merge the datasets for a specific year."""
     filtered_productivity_data = productivity_data[productivity_data['Year'] == year]
     filtered_working_hours_data = working_hours_data[working_hours_data['Year'] == year]
 
@@ -22,8 +23,8 @@ def preprocess_data(productivity_data, working_hours_data, year):
         'Average annual working hours per worker': 'Working Hours'
     })
 
+#Creates and saves a scatter plot with a regression line
 def create_scatter_plot(data, output_file):
-    """Create and save a scatter plot with a regression line."""
     plt.figure(figsize=(10, 6))
     sns.regplot(
         x='Working Hours',
@@ -38,6 +39,17 @@ def create_scatter_plot(data, output_file):
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
     plt.close()
 
+#Calculates summary statistics and correlation coefficient 
+def calculate_statistics(data):
+    """Calculate summary statistics and correlation coefficient."""
+    # Summary statistics
+    summary_stats = data[['Working Hours', 'Productivity']].describe()
+
+    # Correlation coefficient
+    correlation, p_value = pearsonr(data['Working Hours'], data['Productivity'])
+
+    return summary_stats, correlation, p_value
+
 def main():
     productivity_file = 'Data/labor-productivity-per-hour-pennworldtable.csv'
     working_hours_file = 'Data/annual-working-hours-per-worker.csv'
@@ -46,6 +58,10 @@ def main():
 
     productivity_data, working_hours_data = load_data(productivity_file, working_hours_file)
     merged_data = preprocess_data(productivity_data, working_hours_data, year)
+    summary_stats, correlation, p_value = calculate_statistics(merged_data)
+    print("Summary Statistics:\n", summary_stats)
+    print("Correlation Coefficient:", correlation)
+    print("P-value:", p_value)
     create_scatter_plot(merged_data, output_file)
 
 if __name__ == '__main__':

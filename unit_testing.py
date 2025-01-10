@@ -5,7 +5,7 @@ from scipy.stats import linregress
 from unittest.mock import patch
 from correlation_analysis import load_data, preprocess_data, create_scatter_plot
 
-class TestCorrelationAnalysis(unittest.TestCase):
+class TestAnalysis(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
