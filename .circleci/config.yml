@@ -8,10 +8,19 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: pip install -r requirements.txt
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Set PYTHONPATH
+          command: |
+            export PYTHONPATH=$PYTHONPATH:$(pwd)
       - run:
           name: Run tests
-          command: pytest Tests/test_unit.py 
+          command: |
+            . venv/bin/activate
+            pytest Tests/test_unit.py
 
 workflows:
   version: 2
