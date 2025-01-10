@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 from scipy.stats import linregress
 from unittest.mock import patch
-from correlation_analysis import load_data, preprocess_data, create_scatter_plot
+from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics
 
 class TestAnalysis(unittest.TestCase):
 
@@ -66,6 +66,18 @@ class TestAnalysis(unittest.TestCase):
         # Assert the slope and intercept are correct
         self.assertAlmostEqual(slope, expected_slope, places=2, msg="Slope does not match the expected value.")
         self.assertAlmostEqual(intercept, expected_intercept, places=2, msg="Intercept does not match the expected value.")
+
+    def test_calculate_statistics(self):
+        # Use the expected merged dataset
+        summary_stats, correlation, p_value = calculate_statistics(self.expected_merged_data)
+
+        # Expected summary statistics and correlation values (calculated manually or separately)
+        expected_correlation = -1.0
+        expected_p_value = 0.0
+
+        # Assert correlation and p-value
+        self.assertAlmostEqual(correlation, expected_correlation, places=2, msg="Correlation coefficient mismatch.")
+        self.assertTrue(p_value > 0, "P-value should be greater than 0.")
 
 
 # Run the tests
