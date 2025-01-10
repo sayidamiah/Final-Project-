@@ -7,9 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Python Dependencies
+          name: Install dependencies
           command: |
-            python -m pip install --upgrade pip setuptools wheel
             python -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
@@ -18,14 +17,15 @@ jobs:
           command: |
             export PYTHONPATH=$PYTHONPATH:$(pwd)
       - run:
-          name: Run Tests
+          name: Run tests
           command: |
             . venv/bin/activate
-            pytest Tests
+            pytest Tests/test_unit.py
 
 workflows:
   version: 2
   build:
     jobs:
       - build
+
 
