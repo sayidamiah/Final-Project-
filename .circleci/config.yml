@@ -7,13 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install Dependencies
           command: pip install -r requirements.txt
       - run:
           name: Run tests
-          command: pytest unit_testing.py 
+          command: pytest unit_testing
 
 workflows:
   version: 2
   build:
     jobs:
+      - build
