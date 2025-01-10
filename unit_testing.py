@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 from scipy.stats import linregress
 from unittest.mock import patch
-from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range
+from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range, add_lagged_variables
 
 class TestAnalysis(unittest.TestCase):
 
@@ -84,6 +84,22 @@ class TestAnalysis(unittest.TestCase):
         merged_data = preprocess_data_range(self.productivity_data, self.working_hours_data, 2008, 2017)
         expected_data = self.expected_merged_data
         pd.testing.assert_frame_equal(merged_data, expected_data)
+    
+    def test_add_lagged_variables(self):
+        # Test the creation of lagged variables
+        data = pd.DataFrame({
+            'Entity': ['Country A', 'Country A', 'Country A'],
+            'Year': [2008, 2009, 2010],
+            'Working Hours': [1800, 1700, 1600]
+        })
+        result = add_lagged_variables(data, lag_column="Working Hours", lagged_column_name="Lagged_WorkingHours_1")
+        expected = pd.DataFrame({
+            'Entity': ['Country A', 'Country A', 'Country A'],
+            'Year': [2008, 2009, 2010],
+            'Working Hours': [1800, 1700, 1600],
+            'Lagged_WorkingHours_1': [None, 1800, 1700]
+        })
+        pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
 
 
 # Run the tests
