@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 from io import BytesIO
 from unittest.mock import patch
-from Plots.correlation_analysis import load_data, preprocess_data, create_scatter_plot
+from correlation_analysis import load_data, preprocess_data, create_scatter_plot
 
 class TestCorrelationAnalysis(unittest.TestCase):
 
