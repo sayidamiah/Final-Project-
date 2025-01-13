@@ -8,6 +8,8 @@ Features
 Datasets
 Installation
 Usage
+Outputs
+Continous Integration
 
 ---
 
