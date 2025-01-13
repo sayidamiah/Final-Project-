@@ -3,7 +3,7 @@ import pandas as pd
 from io import BytesIO
 from scipy.stats import linregress
 from unittest.mock import patch
-from correlation_analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range, add_lagged_variables, create_time_lag_scatter_plot
+from analysis import load_data, preprocess_data, create_scatter_plot, calculate_statistics,preprocess_data_range, add_lagged_variables, create_time_lag_scatter_plot
 
 class TestAnalysis(unittest.TestCase):
 
