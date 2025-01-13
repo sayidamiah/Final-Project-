@@ -3,21 +3,23 @@
 This repository provides tools for analysing the relationship between productivity and working hours, utilising datasets, statistical methods, and visualisation techniques. The goal is to explore how working hours impact productivity using various data preprocessing and analytical methods.
 
 ## Table of Contents
-Repository Structure
-Features
-Datasets
-Installation
-Usage
-Outputs
-Continous Integration
+- [Repository Structure](#repository-structure)
+- [Features](#features)
+- [Datasets](#datasets)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Outputs](#outputs)
+- [Continuous Integration](#continuous-integration)
 
 ---
 
 ## Repository Structure
 
+```plaintext
 FINAL-PROJECT/
 ├── __pycache__/                   # Cached Python files
-├── .circleci/config.yml           # CircleCI configuration file for CI/CD
+├── .circleci/
+│   └── config.yml                # CircleCI configuration file for CI/CD
 ├── Data/                          # Directory containing datasets
 │   ├── annual-working-hours-per-worker.csv
 │   ├── labor-productivity-per-hour-pennworld.csv
@@ -29,7 +31,7 @@ FINAL-PROJECT/
 ├── README.md                      # Project documentation (this file)
 ├── requirements.txt               # Dependencies for the project
 ├── unit_testing.py                # Unit tests for the project
-├── unit_tests_info.txt            # Detailed test descriptions
+└── unit_tests_info.txt            # Detailed test descriptions
 
 ---
 
@@ -58,9 +60,9 @@ Unit tests to ensure correctness of data handling, statistical analysis, and vis
 
 The Data folder contains the following datasets, which are used to create visualisations and analyse the relationship between productivity and working hours:
 
-annual-working-hours-per-worker.csv: Contains the average annual working hours per worker for various countries over multiple years.
+- annual-working-hours-per-worker.csv: Contains the average annual working hours per worker for various countries over multiple years.
 
-labor-productivity-per-hour-pennworld.csv: Provides productivity metrics (output per hour worked) for the same set of countries.
+- labor-productivity-per-hour-pennworld.csv: Provides productivity metrics (output per hour worked) for the same set of countries.
 
 These datasets are preprocessed, merged, and analysed using the tools in the analysis.py module to generate insights and visualisations.
 
@@ -83,28 +85,32 @@ pip install -r requirements.txt
 
 1. Run Analysis
 The main analysis script is analysis.py. It includes functions to:
-Load data.
-Preprocess datasets.
-Generate scatter plots and statistical summaries.
 
-To run the script:
-python analysis.py
+- Load data.
+- Preprocess datasets.
+- Generate scatter plots and statistical summaries.
+
+To run the script: python analysis.py
 
 2. Run Tests
-The unit_testing.py file contains unit tests for all key functions. To execute the tests:
-python -m unittest unit_testing.py
+The unit_testing.py file contains unit tests for all key functions. 
+
+To execute the tests: python -m unittest unit_testing.py
 
 ## Outputs
 
-Visualisations - The following plots are generated and saved in the Images/ directory:
+### Visualisations
 
-correlation_working_hours_productivity.png: Correlation scatter plot between working hours and productivity.
-time_lag_scatter_plot.png: Scatter plot showing lagged effects of working hours on productivity.
+The following plots are generated and saved in the Images/ directory:
 
-Statistical Summary - The analysis script outputs key metrics, including:
+- correlation_working_hours_productivity.png: Correlation scatter plot between working hours and productivity.
+- time_lag_scatter_plot.png: Scatter plot showing lagged effects of working hours on productivity.
 
-Correlation coefficients.
-Regression line parameters (slope and intercept).
+### Statistical Summary
+The analysis script outputs key metrics, including:
+
+- Correlation coefficients.
+- Regression line parameters (slope and intercept).
 
 ## Continuous Integration
 This repository uses CircleCI for continuous integration. The .circleci/config.yml file defines the CI pipeline, ensuring that all tests pass before merging code.
