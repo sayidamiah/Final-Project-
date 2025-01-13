@@ -1,0 +1,40 @@
+Key Tests for Repository Code
+
+1. Data Loading Tests
+Test Name: test_load_data
+Description: Verifies that the load_data function correctly loads datasets from CSV files.
+Expected Output: The function should return pandas DataFrames that match the expected structure and data.
+
+2. Data Preprocessing Tests
+Test Name: test_preprocess_data
+Description: Tests whether preprocess_data merges and filters datasets correctly for a given year.
+Expected Output: The merged dataset should match the expected output.
+
+2a.Test Name: test_preprocess_data_range
+Description: Verifies that the preprocess_data_range function correctly merges and filters datasets for a specified year range.
+Expected Output: The filtered dataset should match the expected output.
+
+3. Scatter Plot Creation Tests
+Test Name: test_create_scatter_plot
+Description: Ensures that the create_scatter_plot function generates a scatter plot without errors.
+Expected Output: The plot should render successfully and match visual expectations.
+
+4. Statistical Calculation Tests
+Test Name: test_calculate_statistics
+Description: Tests the calculate_statistics function for generating summary statistics, correlation, and p-value.
+Expected Output: The correlation coefficient and p-value should match manually calculated values.
+
+5. Regression Line Fitting Tests
+Test Name: test_line_fitting
+Description: Verifies the slope and intercept of the regression line calculated by linregress.
+Expected Output: The slope and intercept should match expected values to within a 2-decimal tolerance.
+
+6. Lagged Variables Tests
+Test Name: test_add_lagged_variables
+Description: Tests the add_lagged_variables function for correctly adding lagged columns to the dataset.
+Expected Output: The resulting DataFrame should include the lagged variable column with correct values.
+
+7. Time Lag Scatter Plot Tests
+Test Name: test_create_time_lag_scatter_plot
+Description: Ensures the create_time_lag_scatter_plot function generates a time-lag scatter plot without errors.
+Expected Output: The plot should render successfully and include expected lagged data.
