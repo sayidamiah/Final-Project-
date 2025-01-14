@@ -71,7 +71,7 @@ These datasets are preprocessed, merged, and analysed using the tools in the ana
 ## Installation
 
 Clone the repository:
-git clone https://github.com/yourusername/final-project.git
+git clone https://github.com/sayidamiah/Final-Project-.git 
 
 Navigate into the project directory:
 cd final-project
